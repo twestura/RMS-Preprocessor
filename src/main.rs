@@ -81,7 +81,8 @@ fn preprocess(script_path: &str, target_dir: &PathBuf) -> Result<(), Box<dyn std
     };
     let target_path = target_dir.join(map_name);
     println!("target_path: {target_path:?}");
-    // let map_contents = std::fs::read_to_string(script_path)?;
+    let map_contents = std::fs::read_to_string(script_path)?;
+    println!("map_contents: {map_contents:?}");
     // TODO call the preprocessor here on the map contents
     // std::fs::write(target_path, map_contents)?;
     Ok(())
@@ -138,14 +139,9 @@ fn preprocess_all_scripts(scripts_dir_path: &str) -> Result<(), Box<dyn std::err
 
 /// Runs the preprocessor, returning an error if it does not succeed.
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    // TODO debugging
-    let map_contents = std::fs::read_to_string("scripts/Brazilian Dynasty/BD Arena Costeria.rms")?;
-    println!("map_contents: {map_contents:?}");
-
     let args: Vec<String> = env::args().collect();
     let program_type = args.get(1).unwrap();
     let path = args.get(2).unwrap();
-    // println!("{program_type} {path}");
     match &program_type[..] {
         "all" => preprocess_all_scripts(path),
         "dir" => preprocess_dir(path),

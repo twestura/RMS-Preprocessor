@@ -15,6 +15,8 @@
 
 use std::{
     env,
+    fs::File,
+    io::{BufReader, BufWriter},
     path::{Path, PathBuf},
 };
 
@@ -74,17 +76,14 @@ fn target_path(script_path: &str) -> Result<PathBuf, Box<dyn std::error::Error>>
 /// Returns an error if the preprocessor fails or if there is an I/O error.
 fn preprocess(script_path: &str, target_dir: &PathBuf) -> Result<(), Box<dyn std::error::Error>> {
     let script_path = PathBuf::from(script_path);
-    println!("script_path: {script_path:?}");
     let map_name = match script_path.file_name() {
         Some(name) => name,
         None => return Err("cannot get file name".into()),
     };
     let target_path = target_dir.join(map_name);
-    println!("target_path: {target_path:?}");
-    let map_contents = std::fs::read_to_string(script_path)?;
-    println!("map_contents: {map_contents:?}");
-    // TODO call the preprocessor here on the map contents
-    // std::fs::write(target_path, map_contents)?;
+    let mut src_reader = BufReader::new(File::open(script_path)?);
+    let mut dest_reader = BufWriter::new(File::create(target_path)?);
+    rms_preprocessor::process_script(&mut src_reader, &mut dest_reader)?;
     Ok(())
 }
 

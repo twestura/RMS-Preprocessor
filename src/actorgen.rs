@@ -26,8 +26,8 @@
 /// each map script.
 pub fn make_constants() -> Vec<String> {
     let mut lines = vec![
-        String::from("#const PHOFF 649"),
-        String::from("#const PHON 1291"),
+        String::from("#const PHOFF 1902"),
+        String::from("#const PHON 1543"),
         String::from("#const TERRAIN_BLOCKER 1613"),
         String::from("#const REVEAL3_TEMP 1874"),
         String::from("#const TRIBUTE_INEFFICIENCY 46"),
@@ -113,20 +113,7 @@ pub fn make_small_constants() -> Vec<String> {
 /// Also sets the Gaia HP for `HERDABLE_A` to `0`.
 pub fn set_placeholder_attributes() -> Vec<String> {
     vec![
-        String::from("effect_amount SET_ATTRIBUTE PHOFF ATTR_DEAD_ID -1"),
-        String::from("effect_amount SET_ATTRIBUTE PHOFF ATTR_TERRAIN_ID 0"),
-        String::from("effect_amount SET_ATTRIBUTE PHOFF ATTR_LINE_OF_SIGHT 0"),
-        String::from("effect_amount SET_ATTRIBUTE PHOFF ATTR_HITPOINTS 0"),
-        String::from("effect_amount SET_ATTRIBUTE PHOFF ATTR_STORAGE_VALUE 0"),
-        String::from("effect_amount SET_ATTRIBUTE PHON ATTR_DEAD_ID -1"),
-        String::from("effect_amount SET_ATTRIBUTE PHON ATTR_TERRAIN_ID 0"),
-        String::from("effect_amount SET_ATTRIBUTE PHON ATTR_LINE_OF_SIGHT 0"),
-        String::from("effect_amount SET_ATTRIBUTE PHON ATTR_HITPOINTS 0"),
-        String::from("effect_amount SET_ATTRIBUTE PHON ATTR_STORAGE_VALUE 0"),
         // String::from("effect_amount GAIA_SET_ATTRIBUTE HERDABLE_A ATTR_HITPOINTS 0"),
-        String::from("effect_amount SET_ATTRIBUTE REVEAL3_TEMP ATTR_DEAD_ID -1"),
-        String::from("effect_amount SET_ATTRIBUTE REVEAL3_TEMP ATTR_HITPOINTS 0"),
-        String::from("effect_amount SET_ATTRIBUTE REVEAL3_TEMP ATTR_LINE_OF_SIGHT 18"),
         String::from("effect_amount MOD_RESOURCE AMOUNT_STARTING_WOOD ATTR_ADD -30"),
         // String::from("effect_amount MOD_RESOURCE AMOUNT_STARTING_FOOD ATTR_ADD -100"),
         String::from("effect_amount MOD_RESOURCE AMOUNT_STARTING_FOOD ATTR_ADD -90"),
@@ -150,16 +137,6 @@ pub fn set_placeholder_attributes_9() -> Vec<String> {
 /// attributes for small maps.
 pub fn set_placeholder_attributes_small() -> Vec<String> {
     vec![
-        String::from("effect_amount SET_ATTRIBUTE PHOFF ATTR_DEAD_ID -1"),
-        String::from("effect_amount SET_ATTRIBUTE PHOFF ATTR_TERRAIN_ID 0"),
-        String::from("effect_amount SET_ATTRIBUTE PHOFF ATTR_LINE_OF_SIGHT 0"),
-        String::from("effect_amount SET_ATTRIBUTE PHOFF ATTR_HITPOINTS 0"),
-        String::from("effect_amount SET_ATTRIBUTE PHOFF ATTR_STORAGE_VALUE 0"),
-        String::from("effect_amount SET_ATTRIBUTE PHON ATTR_DEAD_ID -1"),
-        String::from("effect_amount SET_ATTRIBUTE PHON ATTR_TERRAIN_ID 0"),
-        String::from("effect_amount SET_ATTRIBUTE PHON ATTR_LINE_OF_SIGHT 0"),
-        String::from("effect_amount SET_ATTRIBUTE PHON ATTR_HITPOINTS 0"),
-        String::from("effect_amount SET_ATTRIBUTE PHON ATTR_STORAGE_VALUE 0"),
     ]
 }
 
@@ -167,23 +144,10 @@ pub fn set_placeholder_attributes_small() -> Vec<String> {
 /// Sets the Gaia HP for all biome `BIOME_HERDABLE_A` to `0`.
 pub fn set_placeholder_attributes_four_seasons() -> Vec<String> {
     vec![
-        String::from("effect_amount SET_ATTRIBUTE PHOFF ATTR_DEAD_ID -1"),
-        String::from("effect_amount SET_ATTRIBUTE PHOFF ATTR_TERRAIN_ID 0"),
-        String::from("effect_amount SET_ATTRIBUTE PHOFF ATTR_LINE_OF_SIGHT 0"),
-        String::from("effect_amount SET_ATTRIBUTE PHOFF ATTR_HITPOINTS 0"),
-        String::from("effect_amount SET_ATTRIBUTE PHOFF ATTR_STORAGE_VALUE 0"),
-        String::from("effect_amount SET_ATTRIBUTE PHON ATTR_DEAD_ID -1"),
-        String::from("effect_amount SET_ATTRIBUTE PHON ATTR_TERRAIN_ID 0"),
-        String::from("effect_amount SET_ATTRIBUTE PHON ATTR_LINE_OF_SIGHT 0"),
-        String::from("effect_amount SET_ATTRIBUTE PHON ATTR_HITPOINTS 0"),
-        String::from("effect_amount SET_ATTRIBUTE PHON ATTR_STORAGE_VALUE 0"),
         String::from("effect_amount GAIA_SET_ATTRIBUTE GRASS_HERDABLE_A ATTR_HITPOINTS 0"),
         String::from("effect_amount GAIA_SET_ATTRIBUTE SNOW_HERDABLE_A ATTR_HITPOINTS 0"),
         String::from("effect_amount GAIA_SET_ATTRIBUTE DIRT_HERDABLE_A ATTR_HITPOINTS 0"),
         String::from("effect_amount GAIA_SET_ATTRIBUTE JUNGLE_HERDABLE_A ATTR_HITPOINTS 0"),
-        String::from("effect_amount SET_ATTRIBUTE REVEAL3_TEMP ATTR_DEAD_ID -1"),
-        String::from("effect_amount SET_ATTRIBUTE REVEAL3_TEMP ATTR_HITPOINTS 0"),
-        String::from("effect_amount SET_ATTRIBUTE REVEAL3_TEMP ATTR_LINE_OF_SIGHT 18"),
         String::from("effect_amount MOD_RESOURCE AMOUNT_STARTING_WOOD ATTR_ADD -30"),
         String::from("effect_amount MOD_RESOURCE AMOUNT_STARTING_FOOD ATTR_ADD -100"),
         String::from("effect_percent MOD_RESOURCE TRIBUTE_INEFFICIENCY ATTR_SET 50"),

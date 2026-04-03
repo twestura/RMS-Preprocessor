@@ -29,7 +29,7 @@ pub fn make_constants() -> Vec<String> {
         String::from("#const PHOFF 649"),
         String::from("#const PHON 1291"),
         String::from("#const TERRAIN_BLOCKER 1613"),
-        String::from("#const TEMPORARY_REVEALER 651"),
+        String::from("#const REVEAL3_TEMP 1874"),
         String::from("#const TRIBUTE_INEFFICIENCY 46"),
     ];
     // 590 is VILLAGER_SHEPHERD_F; 592 is VILLAGER_SHEPHPERD_M
@@ -55,7 +55,7 @@ pub fn make_constants_9() -> Vec<String> {
         String::from("#const PHOFF 1902"),
         String::from("#const PHON 1543"),
         String::from("#const TERRAIN_BLOCKER 1613"),
-        String::from("#const TEMPORARY_REVEALER 651"),
+        String::from("#const REVEAL3_TEMP 1874"),
     ];
     // 590 is VILLAGER_SHEPHERD_F; 592 is VILLAGER_SHEPHPERD_M
     for i in 0..6 {
@@ -80,7 +80,7 @@ pub fn make_constants_9_roe_rage() -> Vec<String> {
         String::from("#const PHOFF 1902"),
         String::from("#const PHON 1543"),
         String::from("#const TERRAIN_BLOCKER 1613"),
-        String::from("#const TEMPORARY_REVEALER 651"),
+        String::from("#const REVEAL3_TEMP 1874"),
     ];
     // 56 is VILLAGER_FISHER_M; 57 is VILLAGER_FISHER_F
     for i in 0..6 {
@@ -124,9 +124,9 @@ pub fn set_placeholder_attributes() -> Vec<String> {
         String::from("effect_amount SET_ATTRIBUTE PHON ATTR_HITPOINTS 0"),
         String::from("effect_amount SET_ATTRIBUTE PHON ATTR_STORAGE_VALUE 0"),
         // String::from("effect_amount GAIA_SET_ATTRIBUTE HERDABLE_A ATTR_HITPOINTS 0"),
-        String::from("effect_amount SET_ATTRIBUTE TEMPORARY_REVEALER ATTR_DEAD_ID -1"),
-        String::from("effect_amount SET_ATTRIBUTE TEMPORARY_REVEALER ATTR_HITPOINTS 0"),
-        String::from("effect_amount SET_ATTRIBUTE TEMPORARY_REVEALER ATTR_LINE_OF_SIGHT 18"),
+        String::from("effect_amount SET_ATTRIBUTE REVEAL3_TEMP ATTR_DEAD_ID -1"),
+        String::from("effect_amount SET_ATTRIBUTE REVEAL3_TEMP ATTR_HITPOINTS 0"),
+        String::from("effect_amount SET_ATTRIBUTE REVEAL3_TEMP ATTR_LINE_OF_SIGHT 18"),
         String::from("effect_amount MOD_RESOURCE AMOUNT_STARTING_WOOD ATTR_ADD -30"),
         // String::from("effect_amount MOD_RESOURCE AMOUNT_STARTING_FOOD ATTR_ADD -100"),
         String::from("effect_amount MOD_RESOURCE AMOUNT_STARTING_FOOD ATTR_ADD -90"),
@@ -138,9 +138,9 @@ pub fn set_placeholder_attributes() -> Vec<String> {
 pub fn set_placeholder_attributes_9() -> Vec<String> {
     vec![
         String::from("effect_amount GAIA_SET_ATTRIBUTE HERDABLE_A ATTR_HITPOINTS 0"),
-        String::from("effect_amount SET_ATTRIBUTE TEMPORARY_REVEALER ATTR_DEAD_ID -1"),
-        String::from("effect_amount SET_ATTRIBUTE TEMPORARY_REVEALER ATTR_HITPOINTS 0"),
-        String::from("effect_amount SET_ATTRIBUTE TEMPORARY_REVEALER ATTR_LINE_OF_SIGHT 18"),
+        String::from("effect_amount SET_ATTRIBUTE REVEAL3_TEMP ATTR_DEAD_ID -1"),
+        String::from("effect_amount SET_ATTRIBUTE REVEAL3_TEMP ATTR_HITPOINTS 0"),
+        String::from("effect_amount SET_ATTRIBUTE REVEAL3_TEMP ATTR_LINE_OF_SIGHT 18"),
         String::from("effect_amount MOD_RESOURCE AMOUNT_STARTING_WOOD ATTR_ADD -30"),
         String::from("effect_amount MOD_RESOURCE AMOUNT_STARTING_FOOD ATTR_ADD -90"),
     ]
@@ -181,9 +181,9 @@ pub fn set_placeholder_attributes_four_seasons() -> Vec<String> {
         String::from("effect_amount GAIA_SET_ATTRIBUTE SNOW_HERDABLE_A ATTR_HITPOINTS 0"),
         String::from("effect_amount GAIA_SET_ATTRIBUTE DIRT_HERDABLE_A ATTR_HITPOINTS 0"),
         String::from("effect_amount GAIA_SET_ATTRIBUTE JUNGLE_HERDABLE_A ATTR_HITPOINTS 0"),
-        String::from("effect_amount SET_ATTRIBUTE TEMPORARY_REVEALER ATTR_DEAD_ID -1"),
-        String::from("effect_amount SET_ATTRIBUTE TEMPORARY_REVEALER ATTR_HITPOINTS 0"),
-        String::from("effect_amount SET_ATTRIBUTE TEMPORARY_REVEALER ATTR_LINE_OF_SIGHT 18"),
+        String::from("effect_amount SET_ATTRIBUTE REVEAL3_TEMP ATTR_DEAD_ID -1"),
+        String::from("effect_amount SET_ATTRIBUTE REVEAL3_TEMP ATTR_HITPOINTS 0"),
+        String::from("effect_amount SET_ATTRIBUTE REVEAL3_TEMP ATTR_LINE_OF_SIGHT 18"),
         String::from("effect_amount MOD_RESOURCE AMOUNT_STARTING_WOOD ATTR_ADD -30"),
         String::from("effect_amount MOD_RESOURCE AMOUNT_STARTING_FOOD ATTR_ADD -100"),
         String::from("effect_percent MOD_RESOURCE TRIBUTE_INEFFICIENCY ATTR_SET 50"),
@@ -206,9 +206,9 @@ pub fn set_placeholder_attributes_four_seasons() -> Vec<String> {
 //         String::from("effect_amount SET_ATTRIBUTE PHON ATTR_HITPOINTS 0"),
 //         String::from("effect_amount SET_ATTRIBUTE PHON ATTR_STORAGE_VALUE 0"),
 //         String::from("effect_amount SET_ATTRIBUTE HERDABLE_A ATTR_HITPOINTS 0"),
-//         String::from("effect_amount SET_ATTRIBUTE TEMPORARY_REVEALER ATTR_DEAD_ID -1"),
-//         String::from("effect_amount SET_ATTRIBUTE TEMPORARY_REVEALER ATTR_HITPOINTS 0"),
-//         String::from("effect_amount SET_ATTRIBUTE TEMPORARY_REVEALER ATTR_LINE_OF_SIGHT 18"),
+//         String::from("effect_amount SET_ATTRIBUTE REVEAL3_TEMP ATTR_DEAD_ID -1"),
+//         String::from("effect_amount SET_ATTRIBUTE REVEAL3_TEMP ATTR_HITPOINTS 0"),
+//         String::from("effect_amount SET_ATTRIBUTE REVEAL3_TEMP ATTR_LINE_OF_SIGHT 18"),
 //         String::from("effect_amount MOD_RESOURCE AMOUNT_STARTING_WOOD ATTR_ADD -30"),
 //         String::from("effect_amount MOD_RESOURCE AMOUNT_STARTING_FOOD ATTR_ADD -100"),
 //         String::from("effect_percent MOD_RESOURCE TRIBUTE_INEFFICIENCY ATTR_SET 50"),
@@ -1541,11 +1541,11 @@ pub fn multi_stragglers() -> Vec<String> {
     lines
 }
 
-/// Returns a vector of strings for placing `TEMPORARY_REVEALER`s
+/// Returns a vector of strings for placing `REVEAL3_TEMP`s
 /// inside of the `box0` near the TC.
 pub fn vision() -> Vec<String> {
     vec![
-        String::from("create_object TEMPORARY_REVEALER {"),
+        String::from("create_object REVEAL3_TEMP {"),
         String::from("number_of_objects 4"),
         String::from("actor_area_to_place_in box0"),
         String::from("set_place_for_every_player"),

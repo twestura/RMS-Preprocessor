@@ -136,8 +136,7 @@ pub fn set_placeholder_attributes_9() -> Vec<String> {
 /// Returns a vector of lines of map code setting the placeholder object
 /// attributes for small maps.
 pub fn set_placeholder_attributes_small() -> Vec<String> {
-    vec![
-    ]
+    vec![]
 }
 
 /// Sets placeholder attributes for Four Seasons.
@@ -1863,11 +1862,16 @@ pub fn rotations_april_2025(unique_label: &str, num_points: usize) -> String {
         // Choose a quadrant and compute the x and y coordinates of the angle.
         String::from("start_random"),
         format!("percent_chance 25 #const {s}T0 {s}T #const {s}X0 {s}COS #const {s}Y0 {s}SIN"),
-        format!("percent_chance 25 #const {s}T0 ({s}T + 90) #const {s}X0 (-1 * {s}SIN) #const {s}Y0 {s}COS"),
-        format!("percent_chance 25 #const {s}T0 ({s}T + 180) #const {s}X0 (-1 * {s}COS) #const {s}Y0 (-1 * {s}SIN)"),
-        format!("percent_chance 25 #const {s}T0 ({s}T + 270) #const {s}X0 {s}SIN #const {s}Y0 (-1 * {s}COS)"),
+        format!(
+            "percent_chance 25 #const {s}T0 ({s}T + 90) #const {s}X0 (-1 * {s}SIN) #const {s}Y0 {s}COS"
+        ),
+        format!(
+            "percent_chance 25 #const {s}T0 ({s}T + 180) #const {s}X0 (-1 * {s}COS) #const {s}Y0 (-1 * {s}SIN)"
+        ),
+        format!(
+            "percent_chance 25 #const {s}T0 ({s}T + 270) #const {s}X0 {s}SIN #const {s}Y0 (-1 * {s}COS)"
+        ),
         String::from("end_random"),
-
         // Rotation matrix entries.
         format!("#const {s}N {num_points}"),
         format!("#const {s}RT (360 / {s}N)"),
@@ -1913,11 +1917,16 @@ pub fn rotations(unique_label: &str, num_points: usize) -> String {
         // Choose a quadrant and compute the x and y coordinates of the angle.
         String::from("start_random"),
         format!("percent_chance 25 #const {s}T0 {s}T #const {s}X0 {s}COS #const {s}Y0 {s}SIN"),
-        format!("percent_chance 25 #const {s}T0 ({s}T + 90) #const {s}X0 (-1 * {s}SIN) #const {s}Y0 {s}COS"),
-        format!("percent_chance 25 #const {s}T0 ({s}T + 180) #const {s}X0 (-1 * {s}COS) #const {s}Y0 (-1 * {s}SIN)"),
-        format!("percent_chance 25 #const {s}T0 ({s}T + 270) #const {s}X0 {s}SIN #const {s}Y0 (-1 * {s}COS)"),
+        format!(
+            "percent_chance 25 #const {s}T0 ({s}T + 90) #const {s}X0 (-1 * {s}SIN) #const {s}Y0 {s}COS"
+        ),
+        format!(
+            "percent_chance 25 #const {s}T0 ({s}T + 180) #const {s}X0 (-1 * {s}COS) #const {s}Y0 (-1 * {s}SIN)"
+        ),
+        format!(
+            "percent_chance 25 #const {s}T0 ({s}T + 270) #const {s}X0 {s}SIN #const {s}Y0 (-1 * {s}COS)"
+        ),
         String::from("end_random"),
-
         // Rotation matrix entries.
         format!("#const {s}N {num_points}"),
         format!("#const {s}RT (360 / {s}N)"),
@@ -1962,20 +1971,27 @@ pub fn trig_old(degree_constant: &str) -> String {
     let d = degree_constant;
     let lines = vec![
         format!("#const {d}_ROUNDED ({d} / 360 * -360 + {d})"),
-        format!("#const {d}_ROUNDED_IS_NEGATIVE ({d}_ROUNDED / 2 / 2 / 2 / 2 / 2 / 2 / 2 / 2 + 1 / 2 - 1 * -1)"),
+        format!(
+            "#const {d}_ROUNDED_IS_NEGATIVE ({d}_ROUNDED / 2 / 2 / 2 / 2 / 2 / 2 / 2 / 2 + 1 / 2 - 1 * -1)"
+        ),
         format!("#const {d}_CLAMPED_DEG ({d}_ROUNDED_IS_NEGATIVE * 360 + {d}_ROUNDED)"),
-        format!("#const {d}_IS_UPPER_HALF ({d}_CLAMPED_DEG - 180 / 2 / 2 / 2 / 2 / 2 / 2 / 2 / 2 + 1 / 2)"),
+        format!(
+            "#const {d}_IS_UPPER_HALF ({d}_CLAMPED_DEG - 180 / 2 / 2 / 2 / 2 / 2 / 2 / 2 / 2 + 1 / 2)"
+        ),
         format!("#const {d}_SIN_ARG (-180 * {d}_IS_UPPER_HALF + {d}_CLAMPED_DEG)"),
         format!("#const {d}_XCOMP (180 - {d}_SIN_ARG * {d}_SIN_ARG)"),
         format!("#const {d}_NUMERATOR (4 * {d}_XCOMP * PAD)"),
         format!("#const {d}_DENOMINATOR (40500 - {d}_XCOMP)"),
         format!("#const {d}_FRACTION ({d}_NUMERATOR / {d}_DENOMINATOR)"),
         format!("#const SIN_{d} (-2 * {d}_IS_UPPER_HALF + 1 * {d}_FRACTION)"),
-
         format!("#const {d}_COS_INITIAL_DEG (90 - {d}_CLAMPED_DEG)"),
-        format!("#const {d}_COS_INITIAL_IS_NEG ({d}_COS_INITIAL_DEG / 2 / 2 / 2 / 2 / 2 / 2 / 2 / 2 / 2 + 1 / 2 * -1 + 1)"),
+        format!(
+            "#const {d}_COS_INITIAL_IS_NEG ({d}_COS_INITIAL_DEG / 2 / 2 / 2 / 2 / 2 / 2 / 2 / 2 / 2 + 1 / 2 * -1 + 1)"
+        ),
         format!("#const {d}_COS_CLAMPED_DEG (360 * {d}_COS_INITIAL_IS_NEG + {d}_COS_INITIAL_DEG)"),
-        format!("#const {d}_COS_IS_UPPER_HALF ({d}_COS_CLAMPED_DEG - 180 / 2 / 2 / 2 / 2 / 2 / 2 / 2 / 2 + 1 / 2)"),
+        format!(
+            "#const {d}_COS_IS_UPPER_HALF ({d}_COS_CLAMPED_DEG - 180 / 2 / 2 / 2 / 2 / 2 / 2 / 2 / 2 + 1 / 2)"
+        ),
         format!("#const {d}_COS_ARG (-180 * {d}_COS_IS_UPPER_HALF + {d}_COS_CLAMPED_DEG)"),
         format!("#const {d}_COS_XCOMP (180 - {d}_COS_ARG * {d}_COS_ARG)"),
         format!("#const {d}_COS_NUMERATOR (4 * {d}_COS_XCOMP * PAD)"),
@@ -2010,14 +2026,38 @@ pub fn trig_april_2025(degree_constant: &str) -> String {
 pub fn trig(degree_constant: &str) -> String {
     let d = degree_constant;
     let lines = vec![
+        format!("#const R{d} ({d} % 360 + 360 % 360 * -1 + 180)"),
+        format!("#const S{d} (R{d} * 2 + 1 % 2)"),
+        format!("#const P{d} (180 * S{d} - R{d} * R{d})"),
+        format!("#const D{d} (40500 - P{d})"),
+        format!("#const SIN_{d} (S{d} * 4 * P{d} / D{d})"),
+        format!("#const CR{d} (270 - R{d} % 360 * -1 + 180)"),
+        format!("#const CS{d} (CR{d} * 2 + 1 % 2)"),
+        format!("#const CP{d} (180 * CS{d} - CR{d} * CR{d})"),
+        format!("#const CD{d} (40500 - CP{d})"),
+        format!("#const COS_{d} (CS{d} * 4 * CP{d} / CD{d})"),
+    ];
+    lines.join("\n")
+}
+
+/// Defines `COS_{degree_constant}` and `SIN_{degree_constant}`.
+/// Previous implementation, used until the Brazilian Dynasty LAN.
+#[allow(dead_code)]
+pub fn trig_old_2026(degree_constant: &str) -> String {
+    let d = degree_constant;
+    let lines = vec![
         format!("#const R{d} ({d} + 360000 % 360 * -1 + 180)"),
-        format!("#const S{d} (R{d} + 1 / 2 % -inf + 1 / 2 % -inf + 1 / 2 % -inf + 1 / 2 % -inf + 1 / 2 % -inf + 1 / 2 % -inf + 1 / 2 % -inf + 1 / 2 % -inf * 2 - 1)"),
+        format!(
+            "#const S{d} (R{d} + 1 / 2 % -inf + 1 / 2 % -inf + 1 / 2 % -inf + 1 / 2 % -inf + 1 / 2 % -inf + 1 / 2 % -inf + 1 / 2 % -inf + 1 / 2 % -inf * 2 - 1)"
+        ),
         format!("#const ARG_SUPP{d} (180 * S{d} - R{d} * R{d})"),
         format!("#const DENOM{d} (40500 - ARG_SUPP{d})"),
         format!("#const SIN_{d} (S{d} * 4 * ARG_SUPP{d} / DENOM{d})"),
         format!("#const CDEG{d} (90 - {d})"),
         format!("#const CR{d} (CDEG{d} + 360000 % 360 * -1 + 180)"),
-        format!("#const CS{d} (CR{d} + 1 / 2 % -inf + 1 / 2 % -inf + 1 / 2 % -inf + 1 / 2 % -inf + 1 / 2 % -inf + 1 / 2 % -inf + 1 / 2 % -inf + 1 / 2 % -inf * 2 - 1)"),
+        format!(
+            "#const CS{d} (CR{d} + 1 / 2 % -inf + 1 / 2 % -inf + 1 / 2 % -inf + 1 / 2 % -inf + 1 / 2 % -inf + 1 / 2 % -inf + 1 / 2 % -inf + 1 / 2 % -inf * 2 - 1)"
+        ),
         format!("#const CARG_SUPP{d} (180 * CS{d} - CR{d} * CR{d})"),
         format!("#const CDENOM{d} (40500 - CARG_SUPP{d})"),
         format!("#const COS_{d} (CS{d} * 4 * CARG_SUPP{d} / CDENOM{d})"),

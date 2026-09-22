@@ -2040,6 +2040,19 @@ pub fn trig(degree_constant: &str) -> String {
     lines.join("\n")
 }
 
+/// Defines `SIN_{degree_constant}`.
+pub fn sin_only(degree_constant: &str) -> String {
+    let d = degree_constant;
+    let lines = vec![
+        format!("#const R{d} ({d} % 360 + 360 % 360 * -1 + 180)"),
+        format!("#const S{d} (R{d} * 2 + 1 % 2)"),
+        format!("#const P{d} (180 * S{d} - R{d} * R{d})"),
+        format!("#const D{d} (40500 - P{d})"),
+        format!("#const SIN_{d} (S{d} * 4 * P{d} / D{d})"),
+    ];
+    lines.join("\n")
+}
+
 /// Defines `COS_{degree_constant}` and `SIN_{degree_constant}`.
 /// Previous implementation, used until the Brazilian Dynasty LAN.
 #[allow(dead_code)]

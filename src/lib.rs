@@ -9,6 +9,8 @@ use std::{
 
 use actorgen::{circle, rotations, trig};
 
+use crate::actorgen::sin_only;
+
 mod actorgen;
 mod circlegen;
 mod landgen;
@@ -232,6 +234,10 @@ fn expand_line(line: &str) -> Vec<String> {
         if line.starts_with("#TRIG") {
             let degree_constant = parse_trig(line);
             return vec![trig(degree_constant)];
+        }
+        if line.starts_with("#SIN") {
+            let degree_constant = parse_trig(line);
+            return vec![sin_only(degree_constant)];
         }
         if line.starts_with("#INIT_ANGLE_TRIG") {
             let (t, n, a) = parse_init_angle_trig(line);
